@@ -24,37 +24,42 @@ public class User_profile {
 	private int user_profile_id;
 	
 	@Column( name = "user_id")
-	private int user_id;
+	private long user_id;
 	
 	@Column( name = "email")
 	private String email;
 	
 	@Column( name = "mobilenumber")
 	private long mobilenumber;
-	
+
 	@Column( name = "name")
 	private String name;
-
+	
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn( name = "order_id")
+	@JoinColumn( name = "booking_id")
 	@JsonBackReference
-	private Order_details order_details;
+	private Booking_details booking_details;
+	
+
 	
 	
-	public int getUser_id() {
+	
+
+
+	public void setUser_profile_id(int user_profile_id) {
+		this.user_profile_id = user_profile_id;
+	}
+
+
+	
+
+	public long getUser_id() {
 		return user_id;
 	}
 
 
-
-	public Order_details getOrder_details() {
-		return order_details;
-	}
-
-
-
-	public void setOrder_details(Order_details order_details) {
-		this.order_details = order_details;
+	public void setBooking_details(Booking_details booking_details) {
+		this.booking_details = booking_details;
 	}
 
 
@@ -70,7 +75,17 @@ public class User_profile {
 	}
 
 
-	public void setUser_id(int user_id) {
+
+	public User_profile(long user_id, String email, long mobilenumber, String name) {
+		super();
+		this.user_id = user_id;
+		this.email = email;
+		this.mobilenumber = mobilenumber;
+		this.name = name;
+	}
+
+
+	public void setUser_id(long user_id) {
 		this.user_id = user_id;
 	}
 
